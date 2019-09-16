@@ -21,7 +21,6 @@ name varchar
 订单
 id pk
 烟草id
-用户id
 日期date
 
 
