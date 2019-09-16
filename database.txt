@@ -1,0 +1,32 @@
+tobacco
+
+用户:
+id pk
+user varchar
+password varchar
+name varchar
+电话 varchar
+订单id int
+
+烟草：
+id pk
+name varchar
+供应商id
+价格 int
+
+供应商
+id pk
+name varchar
+
+订单
+id pk
+烟草id
+用户id
+日期date
+
+
+管理员
+id pk
+name varchar
+user
+password
