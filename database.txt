@@ -23,7 +23,6 @@ id pk
 烟草id
 日期date
 
-
 管理员
 id pk
 name varchar
