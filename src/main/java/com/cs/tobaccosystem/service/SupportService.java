@@ -29,7 +29,13 @@ public class SupportService {
     }
 
     public Support addSupport(Support support){
-        return supportDao.save(support);
+        Support current  = findByID(support.getSupportid());
+        if(current.getSupportid() > -1){
+            return current;
+        }
+        else {
+            return supportDao.save(support);
+        }
     }
 
     public Support deleteSupportById(int id){

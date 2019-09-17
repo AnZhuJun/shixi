@@ -33,7 +33,11 @@ public class TobaccoService {
     }
 
     public Tobacco addTobacco(Tobacco tobacco){
-        return tobaccoDao.save(tobacco);
+        Tobacco current = findById(tobacco.getTobaccoid());
+        if(current.getSupportid() > -1)
+            return current;
+        else
+            return tobaccoDao.save(tobacco);
     }
 
     public Tobacco deleteById(int id){

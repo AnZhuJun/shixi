@@ -37,7 +37,11 @@ public class UserService {
     }
 
     public User add(User user){
-        return userDao.save(user);
+        User current = findById(user.getUserid());
+        if(current.getUserid() > -1)
+            return current;
+        else
+            return userDao.save(user);
     }
 
     public User update(User user){
