@@ -1,10 +1,11 @@
 package com.cs.tobaccosystem.bean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "support")
-public class Support {
+public class Support implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
