@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <form action="/login" method="post" class="">
-        <h1 class="" style="text-align: center">
+        <h1 style="text-align: center">
             甘肃烟草管理系统登陆页面
         </h1>
         <div class="form-group">

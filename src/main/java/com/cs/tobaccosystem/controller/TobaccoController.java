@@ -8,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-@RestController
+@Controller
 @RequestMapping("/tobacco")
 public class TobaccoController {
     @Autowired
@@ -22,6 +24,11 @@ public class TobaccoController {
 
     @Autowired
     RedisComponent redisComponent;
+
+    @RequestMapping("/error")
+    public String error(){
+        throw new RuntimeException("test exception");
+    }
 
     @GetMapping("/all")
     public List<Tobacco> getAllTobacco(){
@@ -60,6 +67,26 @@ public class TobaccoController {
     @PutMapping("/add")
     public Tobacco add(@RequestBody Tobacco tobacco){
         return tobaccoService.addTobacco(tobacco);
+    }
+
+    @RequestMapping("/tobacco")
+    public String tobacco(ModelMap modelMap){
+        List<Tobacco> tobaccos = tobaccoService.findAll();
+        modelMap.put("tobaccos",tobaccos);
+        return "tobacco";
+    }
+
+    @PostMapping("/tobacco")
+    public String addAndGetTobacco(String name, int supportid, int price, ModelMap map){
+        Tobacco tobacco = new Tobacco();
+        tobacco.setName(name);
+        tobacco.setSupportid(supportid);
+        tobacco.setPrice(price);
+        tobaccoService.addTobacco(tobacco);
+
+        List<Tobacco> tobaccos =tobaccoService.findAll();
+        map.put("tobaccos",tobaccos);
+        return "tobacco";
     }
 
     @CacheEvict(value = "tobacco",allEntries = true)
