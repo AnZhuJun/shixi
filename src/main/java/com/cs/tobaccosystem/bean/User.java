@@ -2,6 +2,7 @@ package com.cs.tobaccosystem.bean;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -22,8 +23,38 @@ public class User implements Serializable {
     @Column
     private String telephone;
 
+    @Transient
+    private String passwordConfirm;
+
     @Column
-    private int orderid;
+    private boolean ismanager;
+
+    @ManyToMany
+    private Set<Role> roles;
+
+    public boolean ismanager() {
+        return ismanager;
+    }
+
+    public void setManager(boolean manager) {
+        ismanager = manager;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
 
     @Override
     public String toString() {
@@ -33,7 +64,8 @@ public class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", telephone='" + telephone + '\'' +
-                ", orderid=" + orderid +
+                ", passwordConfirm='" + passwordConfirm + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 
@@ -77,23 +109,15 @@ public class User implements Serializable {
         this.telephone = telephone;
     }
 
-    public int getOrderid() {
-        return orderid;
-    }
-
-    public void setOrderid(int orderid) {
-        this.orderid = orderid;
-    }
-
     public User() {
     }
 
-    public User(int userid, String username, String password, String name, String telephone, int orderid) {
+    public User(int userid, String username, String password, String name, String telephone,boolean ismanager) {
         this.userid = userid;
         this.username = username;
         this.password = password;
         this.name = name;
         this.telephone = telephone;
-        this.orderid = orderid;
+        this.ismanager = ismanager;
     }
 }

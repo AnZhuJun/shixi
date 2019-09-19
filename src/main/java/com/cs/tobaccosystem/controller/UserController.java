@@ -23,10 +23,7 @@ public class UserController {
         return userService.findById(id);
     }
 
-    @GetMapping("/find/orderid/{id}")
-    public List<User> getByOrderid(@PathVariable int id){
-        return userService.findByOrderId(id);
-    }
+
 
     @GetMapping("/find/name/{name}")
     public List<User> getByName(@PathVariable String name){
@@ -39,8 +36,8 @@ public class UserController {
     }
 
     @PutMapping("/add")
-    public User add(@RequestBody User user){
-        return userService.add(user);
+    public void add(@RequestBody User user){
+         userService.save(user);
     }
 
     @PostMapping("/update/{id}")

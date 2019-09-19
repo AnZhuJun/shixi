@@ -1,11 +1,11 @@
 <!doctype>
 <html>
 <head>
-    <title>TS Exceptino</title>
+    <title>Damo Exceptino</title>
 </head>
 <body>
 <h1>
-    error-500服务器异常 ${TSException}
+    error-500 ${damoException}
 </h1>
 </body>
 </html>
