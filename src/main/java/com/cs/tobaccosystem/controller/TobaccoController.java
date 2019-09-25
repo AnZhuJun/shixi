@@ -90,8 +90,12 @@ public class TobaccoController {
     }
 
     @CacheEvict(value = "tobacco",allEntries = true)
-    @DeleteMapping("/delete/{id}")
-    public Tobacco delete(@PathVariable int id){
-        return tobaccoService.deleteById(id);
+    @PostMapping("/delete")
+    public String delete(int TobaccoId,ModelMap map){
+        tobaccoService.deleteById(TobaccoId);
+
+        List<Tobacco> tobaccos =tobaccoService.findAll();
+        map.put("tobaccos",tobaccos);
+        return "tobacco";
     }
 }

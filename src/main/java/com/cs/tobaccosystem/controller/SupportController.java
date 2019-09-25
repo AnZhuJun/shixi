@@ -1,13 +1,16 @@
 package com.cs.tobaccosystem.controller;
 
 import com.cs.tobaccosystem.bean.Support;
+import com.cs.tobaccosystem.bean.Tobacco;
 import com.cs.tobaccosystem.service.SupportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/support")
 public class SupportController {
     @Autowired
@@ -42,5 +45,34 @@ public class SupportController {
     @DeleteMapping("/delete/{id}")
     public Support delete(@PathVariable int id){
         return supportService.deleteSupportById(id);
+    }
+
+    @PostMapping("/delete")
+    public String delete(int SupportId,ModelMap map){
+        supportService.deleteSupportById(SupportId);
+
+        List<Support> supports =supportService.findAll();
+        map.put("supports",supports);
+        return "support";
+    }
+
+    @RequestMapping("/support")
+    public String support(ModelMap modelMap){
+        List<Support> supports = supportService.findAll();
+        modelMap.put("supports",supports);
+        return "support";
+    }
+
+    @PostMapping("/support")
+    public String addAndGetSupport(String name, String telephone,String information, ModelMap map){
+        Support support = new Support();
+        support.setName(name);
+        support.setTelephone(telephone);
+        support.setInformation(information);
+        supportService.addSupport(support);
+
+        List<Support> supports =supportService.findAll();
+        map.put("supports",supports);
+        return "support";
     }
 }

@@ -18,13 +18,25 @@ public class Order implements Serializable {
     @Column
     private Date createdate;
 
+    @Column
+    private int userid;
+
     public Order() {
     }
 
-    public Order(int orderid, int tobaccoid, Date createdate) {
+    public Order(int orderid, int tobaccoid, int userid,Date createdate) {
         this.orderid = orderid;
         this.tobaccoid = tobaccoid;
+        this.userid = userid;
         this.createdate = createdate;
+    }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
     @Override

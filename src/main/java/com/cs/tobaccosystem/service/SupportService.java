@@ -17,7 +17,7 @@ public class SupportService {
     }
 
     public Support findByID(int id){
-        return supportDao.findById(id).orElse(new Support(-1,"null"));
+        return supportDao.findById(id).orElse(new Support(-1,"null","null","null"));
     }
 
     public Support findByName(String name){

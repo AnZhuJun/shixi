@@ -8,4 +8,5 @@ import java.util.List;
 public interface TobaccoDao extends JpaRepository<Tobacco,Integer> {
     Tobacco findByName(String name);
     List<Tobacco> findAllBySupportid(int supportid);
+
 }

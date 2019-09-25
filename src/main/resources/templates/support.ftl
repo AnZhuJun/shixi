@@ -3,37 +3,37 @@
 <!doctype html>
 <html>
 <head>
-    <title>Tobaccos</title>
+    <title>Supports</title>
     <link href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/css/index.css" rel="stylesheet"/>
     <script type="text/javascript" src="/webjars/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-<h1>Tobacco</h1>
-<form  action="/tobacco/tobacco" method="post">
+<h1>Support</h1>
+<form  action="/support/support" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="row">
         <div class="col">
             <input type="text" name="name" class="form-control" placeholder="Name" >
         </div>
         <div class="col">
-            <input type="text" name="supportid" class="form-control" placeholder="Supportid">
+            <input type="text" name="telephone" class="form-control" placeholder="telephone">
         </div>
         <div class="col">
-            <input type="text" name="price" class="form-control" placeholder="Price">
+            <input type="text" name="information" class="form-control" placeholder="information">
         </div>
         <div class="col">
-            <button id="create" type="submit" name="${_csrf.parameterName}" value="${_csrf.token} class="btn btn-primary">CREATE TOBACCO</button>
+            <button id="create" type="submit" name="${_csrf.parameterName}" value="${_csrf.token} class="btn btn-primary">create support</button>
         </div>
     </div>
 </form>
 
-<form  action="/tobacco/delete" method="post">
+<form  action="/support/delete" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="row">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div class="col">
-            <input type="text" name="TobaccoId" class="form-control" placeholder="TobaccoId" >
+            <input type="text" name="SupportId" class="form-control" placeholder="SupportId" >
         </div>
         <div class="col">
             <button id="delete" type="submit" name="${_csrf.parameterName}" value="${_csrf.token} class="btn btn-primary">DELETE TOBACCO</button>
@@ -41,23 +41,23 @@
     </div>
 </form>
 
-<#list tobaccos>
+<#list supports>
     <table class="table table-hover table-dark">
         <thead>
         <tr>
             <th scope="col">#id</th>
             <th scope="col">NAME</th>
-            <th scope="col">SUPPORTID</th>
-            <th scope="col">PRICE</th>
+            <th scope="col">TELEPHONE</th>
+            <th scope="col">INFORMATION</th>
         </tr>
         </thead>
         <tbody>
-        <#items as tobacco>
+        <#items as support>
             <tr>
-                <td scope="row">${tobacco.tobaccoid}</td>
-                <td>${tobacco.name}</td>
-                <td>${tobacco.supportid}</td>
-                <td>${tobacco.price}</td>
+                <td scope="row">${support.supportid}</td>
+                <td>${support.name}</td>
+                <td>${support.telephone}</td>
+                <td>${support.information}</td>
             </tr>
         </#items>
         </tbody>

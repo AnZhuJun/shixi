@@ -17,8 +17,10 @@
             Welcome ${name} | <a class="btn btn-link" onclick="document.forms['logout'].submit()">Logout</a>
         </h3>
 
-        <p><a class="btn btn-link" href="/tobacco/tobacco">product</a></p>
-        <p><a class="btn btn-link" href="/tobacco/error">ERROR</a></p>
+        <p><a class="btn btn-link" href="/tobacco/tobacco">烟草管理</a></p>
+        <p><a class="btn btn-link" href="/order/order">订单管理</a></p>
+        <p><a class="btn btn-link" href="/user/user">用户</a></p>
+        <p><a class="btn btn-link" href="/support/support">烟草供应商</a></p>
     </#if>
 </div>
 </body>

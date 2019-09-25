@@ -14,12 +14,20 @@ public class Support implements Serializable {
     @Column
     private String name;
 
+    @Column
+    private String telephone;
+
+    @Column
+    private String information;
+
     public Support() {
     }
 
-    public Support(int supportid, String name) {
+    public Support(int supportid, String name,String telephone,String information) {
         this.supportid = supportid;
         this.name = name;
+        this.telephone = telephone;
+        this.information = information;
     }
 
     @Override
@@ -44,5 +52,21 @@ public class Support implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
     }
 }
